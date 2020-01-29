@@ -2,7 +2,6 @@ module.exports = {
     development: {
         client: 'sqlite3',
         connection: {filename: './database/replate.db3'},
-        useNullasDefault: true,
         migrations: {
             directory: './database/migrations',
             tableName: 'dbmigrations'
