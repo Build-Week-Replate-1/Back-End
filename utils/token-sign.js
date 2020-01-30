@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+require('dotenv').config()
 
 function signToken(user) {
   if(user.businessName) {
@@ -9,7 +10,7 @@ function signToken(user) {
       type: user.type
     };
 
-    const secret = process.env.JWT_SECRET || 'apple orange grapes cake'
+    const secret = process.env.JWT_SECRET
   
     const options = {
       expiresIn: "1hr"
@@ -22,7 +23,7 @@ function signToken(user) {
       volunteerName: user.volunteerName
     }
 
-    const secret = process.env.JWT_SECRET || 'apple orange grapes cake'
+    const secret = process.env.JWT_SECRET
   
     const options = {
       expiresIn: "1hr"
