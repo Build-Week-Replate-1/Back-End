@@ -4,7 +4,9 @@
 
 **API Guide**
 
-End Point | Description
------------- | -------------
-/api/volunteer/register | You need a username, password, phoneNumber, and volunteerName
-/api/volunteer/login | You need a valid username and password will return a token!
+Type | End Point | Description
+------------ | ------------ | -------------
+POST | /api/volunteer/register | You need a username, password, phoneNumber, and volunteerName
+POST | /api/volunteer/login | You need a valid username and password will return a token!
+POST | /api/business/register | You need a username, password, businessName, businessAddress, phoneNumber, and type (must be donor or charity)
+POST | /api/business/login | You need a valid username and password will return a token!
