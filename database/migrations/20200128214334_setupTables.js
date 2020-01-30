@@ -31,7 +31,7 @@ exports.up = function(knex) {
           foodRequest.boolean("pickedUp").defaultTo(false);
           foodRequest.boolean("complete").defaultTo(false);
           foodRequest.integer("businessId",255).unsigned().notNullable().references('id').inTable('businesses').onUpdate("CASCADE").onDelete("CASCADE");
-          foodRequest.integer("volunteerId",255).unsigned().notNullable().references('id').inTable('volunteers').onUpdate("CASCADE").onDelete("CASCADE");
+          foodRequest.integer("volunteerId",255).unsigned().notNullable().references('id').inTable('volunteers');
       })
 
   )
