@@ -4,11 +4,12 @@ const express = require("express")
 const middleware = [helmet(), cors(), express.json()]
 
 const businessRouter = require('../users/businessRouter')
+const volunteerRouter = require('../users/volunteersRouter')
 
 const server = express();
 
 server.use(middleware)
 server.use('/api/business', businessRouter)
-
+server.use('/api/volunteer', volunteerRouter)
 
 module.exports = server
