@@ -6,10 +6,5 @@
 
 End Point | Description
 ------------ | -------------
-/api/volunteer/register | You need `{       
-	"username": "joe",
-  "password": "123",
- 	"phoneNumber": "123456789",
-  "volunteerName":	"Joe Eagleman"
-}`
-Content in the first column | Content in the second column
+/api/volunteer/register | You need a username, password, phoneNumber, and volunteerName
+/api/volunteer/login | You need a valid username and password will return a token!
