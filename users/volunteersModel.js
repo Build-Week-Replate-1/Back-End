@@ -2,7 +2,8 @@ const db = require('../database/dbconfig')
 
 module.exports = {
     add,
-    findBy
+    findBy,
+    findById
 };
 
 function findBy(param) {

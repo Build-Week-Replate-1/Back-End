@@ -9,8 +9,8 @@ router.post('/register', (req, res, next) => {
     let user = {
         username: req.body.username,
         password: hashFunction(req.body.password),
-        phoneNumber: req.body.phoneNumber,
-        volunteerName: req.body.volunteerName
+        phone_number: req.body.phone_number,
+        volunteer_name: req.body.volunteer_name
     };
     volunteerModel.add(user)
         .then(addedUser => {

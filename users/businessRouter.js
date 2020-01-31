@@ -9,9 +9,9 @@ router.post('/register', (req, res, next) => {
     let user = {
         username: req.body.username,
         password: hashFunction(req.body.password),
-        business_name: req.body.businessName,
-        business_address: req.body.businessAddress,
-        phone_number: req.body.phoneNumber,
+        business_name: req.body.business_name,
+        business_address: req.body.business_address,
+        phone_number: req.body.phone_number,
         type: req.body.type
     };
     if(user.type === "donor" || user.type === "charity"){
