@@ -47,6 +47,15 @@ router.post('/login', (req, res, next) => {
         })
 })
 
+router.get('/users', (req, res, next) => {
+    businessModel.getAll()
+        .then(user => {
+            res.status(200).json(user);
+        })
+        .catch(err => {
+            res.status(500).json(err)
+        })
+})
 
 
 module.exports = router;
