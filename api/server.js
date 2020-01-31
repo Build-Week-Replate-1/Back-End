@@ -12,4 +12,9 @@ server.use(middleware)
 server.use('/api/business', businessRouter)
 server.use('/api/volunteer', volunteerRouter)
 
+server.get("/", (req, res) => {
+    return("hello")
+})
+
+
 module.exports = server
