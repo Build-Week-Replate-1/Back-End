@@ -13,7 +13,7 @@ server.use('/api/business', businessRouter)
 server.use('/api/volunteer', volunteerRouter)
 
 server.get("/", (req, res) => {
-    return("hello")
+    res.status(200).json({success: "yes"})
 })
 
 
