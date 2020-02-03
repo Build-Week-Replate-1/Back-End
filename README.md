@@ -5,7 +5,7 @@
 
 **API Guide**
 
-***Site === https://replated.herokuapp.com/***
+***API === https://replated.herokuapp.com/***
 
 Type | End Point | Description
 ------------ | ------------ | -------------
