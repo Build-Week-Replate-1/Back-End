@@ -9,7 +9,16 @@ exports.seed = function(knex) {
           type: "chicken breasts",
           amount: 7,
           pickup_time: new Date(Date.now()),
-          business_id: '1'
+          business_id: '1',
+          pending: true
+        },
+        {       
+          type: "Ham",
+          amount: 5,
+          pickup_time: new Date(Date.now()),
+          business_id: '1',
+          pending: false, 
+          picked_up: true
         }
       ]);
     });
