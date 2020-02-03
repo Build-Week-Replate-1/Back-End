@@ -12,7 +12,8 @@ function findBy(param) {
 
 function findById(id) {
     return db("volunteers")
-      .where({ id })
+      .where(id)
+      .select()
       .first()
   }
 
