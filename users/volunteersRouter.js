@@ -9,16 +9,16 @@ router.post('/register', (req, res, next) => {
     let user = {
         username: req.body.username,
         password: hashFunction(req.body.password),
-        phoneNumber: req.body.phoneNumber,
-        volunteerName: req.body.volunteerName
+        phone_number: req.body.phone_number,
+        volunteer_name: req.body.volunteer_name
     };
     volunteerModel.add(user)
         .then(addedUser => {
             res.status(201).json({message: "User Successfully Created!", addedUser})
-            next()
         })
         .catch(err =>{
             res.status(500).json({message: "Server Error", err})
+            console.log(user)
         })
 })
 

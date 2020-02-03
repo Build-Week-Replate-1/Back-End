@@ -12,4 +12,9 @@ server.use(middleware)
 server.use('/api/business', businessRouter)
 server.use('/api/volunteer', volunteerRouter)
 
+server.get("/", (req, res) => {
+    res.status(200).json({success: "yes"})
+})
+
+
 module.exports = server
