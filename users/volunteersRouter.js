@@ -14,7 +14,7 @@ router.post('/register', (req, res, next) => {
     };
     volunteerModel.add(user)
         .then(addedUser => {
-            res.status(201).json({message: "User Successfully Created!", id: addedUser})
+            res.status(201).json({message: "User Successfully Created!", addedUser})
         })
         .catch(err =>{
             res.status(500).json({message: "Server Error", err})

@@ -17,7 +17,7 @@ router.post('/register', (req, res, next) => {
     if(user.type === "donor" || user.type === "charity"){
         businessModel.add(user)
         .then(addedUser => {
-            res.status(201).json({message: "User Successfully Created!", id: addedUser})
+            res.status(201).json({message: "User Successfully Created!", addedUser})
             next()
         })
         .catch(err =>{
