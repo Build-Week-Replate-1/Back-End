@@ -9,7 +9,7 @@
 
 Type | End Point | Description
 ------------ | ------------ | -------------
-POST | /api/volunteer/register | You need a username, password, phone_number, and volunteer_name
-POST | /api/volunteer/login | You need a valid username and password will return a token!
-POST | /api/business/register | You need a username, password, business_name, business_address, phone_number, and type (must be donor or charity)
-POST | /api/business/login | You need a valid username and password will return a token!
+POST | /api/volunteer/register | Volunteer Registration: You need a username, password, phone_number, and volunteer_name
+POST | /api/volunteer/login | Volunteer Login: You need a valid username and password will return a token!
+POST | /api/business/register | Business Registration: You need a username, password, business_name, business_address, phone_number, and type (must be donor or charity)
+POST | /api/business/login | Business Login: You need a valid username and password will return a token!
