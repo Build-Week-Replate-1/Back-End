@@ -1,15 +1,17 @@
+require('dotenv').config()
 const jwt = require('jsonwebtoken')
 
 function signToken(user) {
-  if(user.businessName) {
+  if(user.business_name) {
     //business
     const payload = {
+      id: user.id,
       username: user.username,
-      businessName: user.businessName,
+      business_name: user.business_name,
       type: user.type
     };
 
-    const secret = process.env.JWT_SECRET || 'apple orange grapes cake'
+    const secret = process.env.JWT_SECRET 
   
     const options = {
       expiresIn: "1hr"
@@ -18,11 +20,12 @@ function signToken(user) {
   } else{
     //volunteer
     const payload = {
+      id: user.id,
       username: user.username,
-      volunteerName: user.volunteerName
+      volunteer_name: user.volunteer_name
     }
 
-    const secret = process.env.JWT_SECRET || 'apple orange grapes cake'
+    const secret = process.env.JWT_SECRET 
   
     const options = {
       expiresIn: "1hr"
