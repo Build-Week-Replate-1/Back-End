@@ -2,7 +2,10 @@
 
 ![Image of API](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Cloud-API-Logo.svg/267px-Cloud-API-Logo.svg.png)
 
+
 **API Guide**
+
+***Site === https://replated.herokuapp.com/***
 
 Type | End Point | Description
 ------------ | ------------ | -------------
