@@ -13,3 +13,6 @@ POST | /api/volunteer/register | Volunteer Registration: You need a username, pa
 POST | /api/volunteer/login | Volunteer Login: You need a valid username and password will return a token!
 POST | /api/business/register | Business Registration: You need a username, password, business_name, business_address, phone_number, and type (must be donor or charity)
 POST | /api/business/login | Business Login: You need a valid username and password will return a token!
+GET | /api/requests/pending | You must have a token! Returns all pending food requests 
+GET | /api/requests/all | You must have a token! Returns all food requests
+POST | /api/requests/add | You must have a token and you must be a business type of donor.
