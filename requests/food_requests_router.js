@@ -35,7 +35,7 @@ router.get('/all', (req, res) => {
                     id: request.id,
                     type: request.type,
                     amount: request.amount,
-                    pickup_time: request.pickup_time,
+                    pickup_time: `${moment(request.pickup_time).format('MMMM Do YYYY, h:mm:ss a')}`,
                     pending: `${request.pending === 1 ? 'true' : 'false'}`,
                     picked_up: `${request.picked_up === 1 ? 'true' : 'false'}`,
                     complete: `${request.complete === 1 ? 'true' : 'false'}`,
