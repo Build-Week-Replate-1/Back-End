@@ -61,17 +61,7 @@ router.post('/add', async (req, res) => {
     if(decoded.type === "donor") {
         await food_requests_model.add(request)
             .then(request => {
-                res.status(201).json({
-                    
-                    id: request.id,
-                    type: request.type,
-                    amount: request.amount,
-                    pending: `${request.pending === 1 ? 'true' : 'false'}`,
-                    picked_up: `${request.picked_up === 1 ? 'true' : 'false'}`,
-                    complete: `${request.complete === 1 ? 'true' : 'false'}`,
-                    business_name: request.business_name
-                })
-
+                res.status(201).json({message: "success", request})
             })
             .catch(err =>{
                 res.status(500).json({message: "server error", err})
