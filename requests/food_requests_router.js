@@ -26,6 +26,34 @@ router.get('/pending', (req, res) => {
         })
 })
 
+router.get('/:id', (req, res) => {
+    const id = req.params.id
+    food_requests_model.findById(id)
+        .then(all => {
+            if (all.length > 0){
+                res.status(200).json(all.map(request => {
+                    return {
+                        id: request.id,
+                        type: request.type,
+                        amount: request.amount,
+                        pickup_time: `${moment(request.pickup_time).format('MMMM Do YYYY, h:mm:ss a')}`,
+                        pending: `${request.pending === 1 ? 'true' : 'false'}`,
+                        picked_up: `${request.picked_up === 1 ? 'true' : 'false'}`,
+                        complete: `${request.complete === 1 ? 'true' : 'false'}`,
+                        business_name: request.business_name
+                    }
+                }))
+            }
+            else{
+                res.status(400).json({message: "food request not found"})
+            }
+
+        })
+        .catch(err =>{
+            res.status(500).json({message: "Server Error", err})
+        })
+})
+
 router.get('/all', (req, res) => {
 
     food_requests_model.all()
@@ -140,6 +168,36 @@ router.put('/update/:id', (req, res) => {
     const {token} = req.headers
     var decoded = jwt_decode(token)
     const id = req.params.id
+    const request = req.body
+    food_requests_model.update(request, id)
+        .then(request => {
+            if (request === 1){
+              res.status(200).json({message: "success", request})  
+            }
+            else{
+                res.status(400).json({message: "food request not found"})
+            }
+        })
+        .catch(err =>{
+            res.status(500).json({message: "server error", err})
+            console.log(decoded)
+        })
+})
+
+router.delete('/delete/:id', (req, res) => {
+    const id = req.params.id
     
+    food_requests_model.remove(id)
+        .then(request => {
+            if(request === 1){
+                res.status(200).json({message: `food request with id of ${req.params.id} has been deleted`})
+            }
+            else{
+                res.status(400).json({message: "food request not found"})
+            }
+        })
+        .catch(err =>{
+            res.status(500).json({message: "Server Error", err})
+        })
 })
 module.exports = router;
