@@ -25,7 +25,7 @@ exports.up = function(knex) {
             request.increments();
   
             request.string("type",255).notNullable();
-            request.integer("amount").notNullable();
+            request.string("amount").notNullable();
             request.dateTime("pickup_time").notNullable();
             request.boolean("pending").defaultTo(true);
             request.boolean("picked_up").defaultTo(false);
