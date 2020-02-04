@@ -9,7 +9,13 @@ exports.seed = function(knex) {
           username: "jake",
           password: hashFunction("123"),
           phone_number: "123456789",
-          volunteer_name:	"Ronaldos Convience"
+          volunteer_name:	"Jacob Calvino"
+        },
+        {       
+          username: "John",
+          password: hashFunction("123"),
+          phone_number: "123456789",
+          volunteer_name:	"John Nintendo"
         }
       ]);
     });

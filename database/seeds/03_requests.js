@@ -10,6 +10,7 @@ exports.seed = function(knex) {
           amount: 7,
           pickup_time: new Date(Date.now()),
           business_id: '1',
+          volunteer_id: '1',
           pending: true
         },
         {       
@@ -17,6 +18,7 @@ exports.seed = function(knex) {
           amount: 5,
           pickup_time: new Date(Date.now()),
           business_id: '1',
+          volunteer_id: '2',
           pending: false, 
           picked_up: true
         }
