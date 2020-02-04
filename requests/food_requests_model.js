@@ -3,10 +3,13 @@ const db = require('../database/dbconfig')
 module.exports = {
     add,
     findBy,
+    findById,
     all,
     pending,
     business_me,
-    volunteer_me
+    volunteer_me,
+    update,
+    remove
 };
 
 function add(request) {
@@ -14,6 +17,10 @@ function add(request) {
         .insert(request)
         .returning('*')
 }
+
+function findById(id) {
+    return db('food_requests').where("id", id)
+};
 
 function findBy(param) {
     return db('food_requests').where(param)
@@ -44,4 +51,16 @@ function volunteer_me(id) {
         .join('businesses as b', 'f.business_id', '=', 'b.id')
         .select('f.id', 'f.type', 'f.amount',' f.pickup_time', 'f.pending', 'f.picked_up', 'f.complete', 'b.business_name', 'f.volunteer_id')
         .where("volunteer_id", id)
+}
+
+function update(request, id) {
+    return db("food_requests")
+        .update(request)
+        .where("id", id)
+}
+
+function remove(id) {
+    return db("food_requests")
+        .where("id", id)
+        .del()
 }
