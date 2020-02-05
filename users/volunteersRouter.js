@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
+const jwt_decode = require('jwt-decode');
 
 const volunteerModel = require('./volunteersModel');
 const signToken = require('../utils/token-sign')
@@ -18,7 +19,6 @@ router.post('/register', (req, res, next) => {
         })
         .catch(err =>{
             res.status(500).json({message: "Server Error", err})
-            console.log(user)
         })
 })
 
@@ -39,6 +39,53 @@ router.post('/login', (req, res, next) => {
             res.status(500).json({message: "server error", err})
             console.log(err)
         })
+})
+
+router.put('/update', (req, res, next) => {
+    let user = {
+        username: req.body.username,
+        volunteer_name: req.body.volunteer_name,
+        phone_number: req.body.phone_number 
+    }
+
+    const {token} = req.headers;
+    var decoded = jwt_decode(token);
+    if(!req.body.password){
+        if(decoded.volunteer_name){
+            volunteerModel.update(user, decoded.id)
+            .then(updatedUser => {
+                res.status(201).json({message: "User Successfully Updated!", updatedUser})
+            })
+            .catch(err =>{
+                res.status(500).json({message: "Server Error", err})
+            })
+        } else {
+            res.status(500).json({message: "You are not a volunteer and cannot edit your user here visit /api/business/update"})
+        }
+    } else {
+        res.status(401).json({message: "you cannot update your password sorry"})
+    }
+
+
+})
+
+router.delete('/delete', (req, res, next) => {
+
+    const {token} = req.headers;
+    var decoded = jwt_decode(token);
+    
+    if(decoded.volunteer_name){
+        volunteerModel.remove(decoded.id)
+        .then(removedUser => {
+            res.status(201).json({message: "User Successfully Deleted!", removedUser})
+        })
+        .catch(err =>{
+            res.status(500).json({message: "Server Error", err})
+        })
+    } else {
+        res.status(500).json({message: "You are not a volunteer and cannot delete your user here visit /api/business/delete"})
+    }
+    
 })
 
 
