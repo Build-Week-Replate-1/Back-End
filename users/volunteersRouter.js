@@ -22,6 +22,37 @@ router.post('/register', (req, res, next) => {
         })
 })
 
+router.get('/me', (req, res) => {
+    const {token} = req.headers;
+    var decoded = jwt_decode(token);
+
+    if(decoded.volunteer_name){
+        volunteerModel.findById(decoded.id)
+        .then(me => {
+            if (me.length > 0){
+                res.status(200).json(me.map(request => {
+                    return {
+                        id: request.id,
+                        username: request.username,
+                        phone_number: request.phone_number,
+                        volunteer_name: request.volunteer_name,
+                    }
+                }))
+            }
+            else{
+                res.status(400).json({message: "User not found"})
+            }
+
+        })
+        .catch(err =>{
+            res.status(500).json({message: "Server Error", err})
+        })
+    }else{
+        res.status(500).json({message: "You are not a volunteer"}) 
+    }
+
+})
+
 router.post('/login', (req, res, next) => {
     let {username, password} = req.body;
 
