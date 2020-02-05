@@ -169,7 +169,8 @@ router.put('/update/:id', (req, res) => {
     var decoded = jwt_decode(token)
     const id = req.params.id
     const request = req.body
-    food_requests_model.update(request, id)
+    if(req.body){
+        food_requests_model.update(request, id)
         .then(request => {
             if (request === 1){
               res.status(200).json({message: "success", request})  
@@ -182,6 +183,10 @@ router.put('/update/:id', (req, res) => {
             res.status(500).json({message: "server error", err})
             console.log(decoded)
         })
+    }else{
+        res.status(401).json({message: "you need to input something in the body"})
+    }
+
 })
 
 router.delete('/delete/:id', (req, res) => {
