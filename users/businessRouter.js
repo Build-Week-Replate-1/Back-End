@@ -6,6 +6,39 @@ const businessModel = require('./businessModel');
 const signToken = require('../utils/token-sign')
 const hashFunction = require('../utils/hashFunction')
 
+router.get('/me', (req, res) => {
+    const {token} = req.headers;
+    var decoded = jwt_decode(token);
+
+    if(!decoded.volunteer_name){
+        businessModel.findById(decoded.id)
+        .then(me => {
+            if (me.length > 0){
+                res.status(200).json(me.map(request => {
+                    return {
+                        id: request.id,
+                        username: request.username,
+                        business_name: request.business_name,
+                        business_address: request.business_address,
+                        phone_number: request.phone_number,
+                        type: request.type
+                    }
+                }))
+            }
+            else{
+                res.status(400).json({message: "User not found"})
+            }
+
+        })
+        .catch(err =>{
+            res.status(500).json({message: "Server Error", err})
+        })
+    }else{
+        res.status(500).json({message: "You are not a business"}) 
+    }
+
+})
+
 router.post('/register', (req, res, next) => {
     let user = {
         username: req.body.username,

@@ -14,10 +14,8 @@ function findBy(param) {
 
 function findById(id) {
     return db("volunteers")
-      .where(id)
-      .select()
-      .first()
-  }
+      .where("id", id)
+}
 
 function add(user) {
     return db("volunteers")
