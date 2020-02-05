@@ -15,8 +15,12 @@ Type | End Point | Description
 ------------ | ------------ | -------------
 POST | /api/volunteer/register | Volunteer Registration: You need a username, password, phone_number, and volunteer_name
 POST | /api/volunteer/login | Volunteer Login: You need a valid username and password will return a token!
+PUT | /api/volunteer/update | You must have a token! Will update the volunteer user you cannot update the password.
+DELETE | /api/volunteer/delete | You must have a token! Will delete the volunteer user the token belongs to.
 POST | /api/business/register | Business Registration: You need a username, password, business_name, business_address, phone_number, and type (must be donor or charity)
 POST | /api/business/login | Business Login: You need a valid username and password will return a token!
+PUT | /api/business/update | You must have a token! Will update the business user you cannot update the password or business type.
+DELETE | /api/business/delete | You must have a token! Will delete the business user the token belongs to.
 
 **Food Request Endpoints**
 
