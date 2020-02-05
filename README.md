@@ -7,6 +7,8 @@
 
 ***API === https://replated.herokuapp.com/***
 
+If You are having issues with the endpoints please view the example_images folder in root of project
+
 Type | End Point | Description
 ------------ | ------------ | -------------
 POST | /api/volunteer/register | Volunteer Registration: You need a username, password, phone_number, and volunteer_name
