@@ -9,12 +9,19 @@
 
 If You are having issues with the endpoints please view the example_images folder in root of project
 
+**User Endpoints**
+
 Type | End Point | Description
 ------------ | ------------ | -------------
 POST | /api/volunteer/register | Volunteer Registration: You need a username, password, phone_number, and volunteer_name
 POST | /api/volunteer/login | Volunteer Login: You need a valid username and password will return a token!
 POST | /api/business/register | Business Registration: You need a username, password, business_name, business_address, phone_number, and type (must be donor or charity)
 POST | /api/business/login | Business Login: You need a valid username and password will return a token!
+
+**Food Request Endpoints**
+
+Type | End Point | Description
+------------ | ------------ | -------------
 GET | /api/requests/pending | You must have a token! Returns all pending food requests 
 GET | /api/requests/all | You must have a token! Returns all food requests
 GET | /api/requests/:id | You must have a token! Returns the food request associated with the id supplied in the address (:id).
