@@ -5,8 +5,9 @@ const jwt_decode = require('jwt-decode');
 const businessModel = require('./businessModel');
 const signToken = require('../utils/token-sign')
 const hashFunction = require('../utils/hashFunction')
+const authenticate = require('../utils/authenticate_middleware')
 
-router.get('/me', (req, res) => {
+router.get('/me', authenticate, (req, res) => {
     const {token} = req.headers;
     var decoded = jwt_decode(token);
 
@@ -81,7 +82,7 @@ router.post('/login', (req, res, next) => {
         })
 })
 
-router.put('/update', (req, res, next) => {
+router.put('/update', authenticate, (req, res, next) => {
     let user = {
         username: req.body.username,
         business_name: req.body.business_name,
@@ -108,7 +109,7 @@ router.put('/update', (req, res, next) => {
  
 })
 
-router.delete('/delete', (req, res, next) => {
+router.delete('/delete', authenticate, (req, res, next) => {
 
     const {token} = req.headers;
     var decoded = jwt_decode(token);
