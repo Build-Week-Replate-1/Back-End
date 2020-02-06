@@ -26,7 +26,7 @@ router.get('/pending', (req, res) => {
         })
 })
 
-router.get('/:id', (req, res) => {
+router.get('/item/:id', (req, res) => {
     const id = req.params.id
     food_requests_model.findById(id)
         .then(all => {
@@ -67,7 +67,8 @@ router.get('/all', (req, res) => {
                     pending: `${request.pending === 1 ? 'true' : 'false'}`,
                     picked_up: `${request.picked_up === 1 ? 'true' : 'false'}`,
                     complete: `${request.complete === 1 ? 'true' : 'false'}`,
-                    business_name: request.business_name
+                    business_name: request.business_name,
+                    volunteer_id: request.volunteer_id
                 }
             }))
         })
