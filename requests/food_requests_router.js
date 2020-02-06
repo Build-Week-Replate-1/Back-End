@@ -16,7 +16,10 @@ router.get('/pending', (req, res) => {
                     pending: `${request.pending === 1 ? 'true' : 'false'}`,
                     picked_up: `${request.picked_up === 1 ? 'true' : 'false'}`,
                     complete: `${request.complete === 1 ? 'true' : 'false'}`,
-                    business_name: request.business_name
+                    business_id: request.business_id,
+                    business_name: request.business_name,
+                    volunteer_id: request.volunteer_id,
+                    volunteer_name: request.volunteer_name
                 }
             }))
             console.log(pending)
@@ -40,7 +43,10 @@ router.get('/item/:id', (req, res) => {
                         pending: `${request.pending === 1 ? 'true' : 'false'}`,
                         picked_up: `${request.picked_up === 1 ? 'true' : 'false'}`,
                         complete: `${request.complete === 1 ? 'true' : 'false'}`,
-                        business_name: request.business_name
+                        business_id: request.business_id,
+                        business_name: request.business_name,
+                        volunteer_id: request.volunteer_id,
+                        volunteer_name: request.volunteer_name
                     }
                 }))
             }
@@ -67,8 +73,10 @@ router.get('/all', (req, res) => {
                     pending: `${request.pending === 1 ? 'true' : 'false'}`,
                     picked_up: `${request.picked_up === 1 ? 'true' : 'false'}`,
                     complete: `${request.complete === 1 ? 'true' : 'false'}`,
+                    business_id: request.business_id,
                     business_name: request.business_name,
-                    volunteer_id: request.volunteer_id
+                    volunteer_id: request.volunteer_id,
+                    volunteer_name: request.volunteer_name
                 }
             }))
         })
@@ -93,8 +101,10 @@ router.get('/business/me', (req, res) => {
                     pending: `${request.pending === 1 ? 'true' : 'false'}`,
                     picked_up: `${request.picked_up === 1 ? 'true' : 'false'}`,
                     complete: `${request.complete === 1 ? 'true' : 'false'}`,
+                    business_id: request.business_id,
                     business_name: request.business_name,
-                    volunteer_name: request.volunteer_id
+                    volunteer_id: request.volunteer_id,
+                    volunteer_name: request.volunteer_name
                 }
             }))
         })
@@ -125,8 +135,10 @@ router.get('/volunteer/me', (req, res) => {
                     pending: `${request.pending === 1 ? 'true' : 'false'}`,
                     picked_up: `${request.picked_up === 1 ? 'true' : 'false'}`,
                     complete: `${request.complete === 1 ? 'true' : 'false'}`,
+                    business_id: request.business_id,
                     business_name: request.business_name,
-                    volunteer_name: request.volunteer_id
+                    volunteer_id: request.volunteer_id,
+                    volunteer_name: request.volunteer_name
                 }
             }))
         })
