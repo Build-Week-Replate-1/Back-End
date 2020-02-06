@@ -64,6 +64,7 @@ router.get('/all', (req, res) => {
 
     food_requests_model.all()
         .then(all => {
+            console.log(all)
             res.status(200).json(all.map(request => {
                 return {
                     id: request.id,
