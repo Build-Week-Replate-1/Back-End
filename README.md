@@ -35,7 +35,7 @@ Type | End Point | Description
 ------------ | ------------ | -------------
 GET | /api/requests/pending | You must have a token! Returns all pending food requests 
 GET | /api/requests/all | You must have a token! Returns all food requests
-GET | /api/requests/:id | You must have a token! Returns the food request associated with the id supplied in the address (:id).
+GET | /api/requests/item/:id | You must have a token! Returns the food request associated with the id supplied in the address (:id).
 GET | /api/requests/business/me | You must have a token! Returns all food requests created for signed in business user 
 GET | /api/requests/volunteer/me | You must have a token! Returns all food requests accepted by signed in volunteer user (volunteer_id on food request matches that of user signed in)
 POST | /api/requests/add | You must have a token and you must be a **business** and type of **donor**. requires (food) type, amount, and pickup_time (in Military time YYYY-MM-DD hh:mm) 
