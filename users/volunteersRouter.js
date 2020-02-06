@@ -61,8 +61,9 @@ router.post('/login', (req, res, next) => {
         .first()
         .then(user => {
         if(user && bcrypt.compareSync(password, user.password)){
+            const signedInUser = {id: user.id,username: user.username, volunteer_name: user.volunteer_name}
             const token = signToken(user) 
-            res.status(200).json({message: "good job", token})
+            res.status(200).json({message: "good job", token, signedInUser})
         } else {
             res.status(401).json({message: 'invalid login information try again'})
         }
