@@ -7,6 +7,7 @@ const jwt_decode = require('jwt-decode');
 router.get('/pending', (req, res) => {
     food_requests_model.pending()
         .then(pending => {
+            console.log(pending)
             res.status(200).json(pending.map(request => {
                 return {
                     id: request.id,
@@ -22,7 +23,6 @@ router.get('/pending', (req, res) => {
                     volunteer_name: request.volunteer_name
                 }
             }))
-            console.log(pending)
         })
         .catch(err =>{
             res.status(500).json({message: "Server Error", err})
@@ -64,7 +64,6 @@ router.get('/all', (req, res) => {
 
     food_requests_model.all()
         .then(all => {
-            console.log(all)
             res.status(200).json(all.map(request => {
                 return {
                     id: request.id,
@@ -114,7 +113,7 @@ router.get('/business/me', (req, res) => {
         })
     } else{
         res.status(401).json({
-            message: "only businesses can acces this if you are a volunteer you can access your pickup requests at /api/requests/volunteers/me"
+            message: "only businesses can acces this if you are a volunteer you can access your pickup requests at /api/requests/volunteer/me"
         })
     }
 
