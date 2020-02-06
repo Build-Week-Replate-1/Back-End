@@ -29,7 +29,7 @@ function findBy(param) {
 function all() {
     return db("food_requests as f")
         .join('businesses as b', 'f.business_id', '=', 'b.id')
-        .select('f.id', 'f.type', 'f.amount',' f.pickup_time', 'f.pending', 'f.picked_up', 'f.complete', 'b.business_name')
+        .select('f.id', 'f.type', 'f.amount',' f.pickup_time', 'f.pending', 'f.picked_up', 'f.complete', 'b.business_name', 'f.volunteer_id')
 }
 
 function pending() {
